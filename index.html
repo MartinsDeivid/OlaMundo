@@ -53,6 +53,7 @@
   </h1>
 
   <script>
+    const spans = document.querySelectorAll("span")
     const htmlSpans = document.querySelectorAll("span.html")
     const cssSpans = document.querySelectorAll("span.css")
     const jsSpans = document.querySelectorAll("span.js")
@@ -62,39 +63,33 @@
     function animar() {
       console.log("Chamou animar com exibir = ", exibir)
 
-      if (exibir === "html") {
-        htmlSpans[0].style.display = "inline"
-        htmlSpans[1].style.display = "inline"
+      // apaga todo mundo
+      spans[0].style.display = "none"
+      spans[1].style.display = "none"
+      spans[2].style.display = "none"
+      spans[3].style.display = "none"
+      spans[4].style.display = "none"
+      spans[5].style.display = "none"
 
-        cssSpans[0].style.display = "none"
-        cssSpans[1].style.display = "none"
+      // mostra o da vez
+      switch (exibir) {
+        case "css":
+          cssSpans[0].style.display = "inline"
+          cssSpans[1].style.display = "inline"
+          exibir = "js";
+          break;
 
-        jsSpans[0].style.display = "none"
-        jsSpans[1].style.display = "none"
+        case "js":
+          jsSpans[0].style.display = "inline"
+          jsSpans[1].style.display = "inline"
+          exibir = "html";
+          break;
 
-        exibir = "css";
-      } else if (exibir === "css") {
-        htmlSpans[0].style.display = "none"
-        htmlSpans[1].style.display = "none"
-
-        cssSpans[0].style.display = "inline"
-        cssSpans[1].style.display = "inline"
-
-        jsSpans[0].style.display = "none"
-        jsSpans[1].style.display = "none"
-
-        exibir = "js";
-      } else if (exibir === "js") {
-        htmlSpans[0].style.display = "none"
-        htmlSpans[1].style.display = "none"
-
-        cssSpans[0].style.display = "none"
-        cssSpans[1].style.display = "none"
-
-        jsSpans[0].style.display = "inline"
-        jsSpans[1].style.display = "inline"
-
-        exibir = "html";
+        default: // html
+          htmlSpans[0].style.display = "inline"
+          htmlSpans[1].style.display = "inline"
+          exibir = "css";
+          break;
       }
 
     }
