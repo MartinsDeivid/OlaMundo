@@ -27,15 +27,15 @@
       display: none;
     }
 
-    span.html {
+    span.tipo1 {
       color: #50fa7b;
     }
 
-    span.css {
+    span.tipo2 {
       color: #ff79c6;
     }
 
-    span.js {
+    span.tipo3 {
       color: #f1fa8c;
     }
   </style>
@@ -43,57 +43,42 @@
 
 <body>
   <h1>
-    <span class="html">&lt;</span>
-    <span class="css">{</span>
-    <span class="js">[</span>
+    <span class="tipo1">&lt;</span>
+    <span class="tipo2">{</span>
+    <span class="tipo3">[</span>
     Olá, mundo!
-    <span class="js">]</span>
-    <span class="css">}</span>
-    <span class="html">&gt;</span>
+    <span class="tipo3">]</span>
+    <span class="tipo2">}</span>
+    <span class="tipo1">&gt;</span>
   </h1>
 
   <script>
+    // pega todos os span (símbolos)
     const spans = document.querySelectorAll("span")
-    const htmlSpans = document.querySelectorAll("span.html")
-    const cssSpans = document.querySelectorAll("span.css")
-    const jsSpans = document.querySelectorAll("span.js")
 
-    let exibir = "html";
+    // começa exibindo o tipo1
+    let exibir = 1;
 
+    // loop de animação
     function animar() {
-      console.log("Chamou animar com exibir = ", exibir)
+      let cssClasseParaExibir = "tipo" + exibir
+      console.log("Exibir=", exibir, " cssClasseParaExibir=", cssClasseParaExibir)
 
-      // apaga todo mundo
-      spans[0].style.display = "none"
-      spans[1].style.display = "none"
-      spans[2].style.display = "none"
-      spans[3].style.display = "none"
-      spans[4].style.display = "none"
-      spans[5].style.display = "none"
+      // apaga ou exibe de acordo com a classe da vez
+      spans.forEach(s => {
+        if (s.classList.contains(cssClasseParaExibir)) {
+          s.style.display = "inline"
+        } else {
+          s.style.display = "none"
+        }
+      })
 
-      // mostra o da vez
-      switch (exibir) {
-        case "css":
-          cssSpans[0].style.display = "inline"
-          cssSpans[1].style.display = "inline"
-          exibir = "js";
-          break;
-
-        case "js":
-          jsSpans[0].style.display = "inline"
-          jsSpans[1].style.display = "inline"
-          exibir = "html";
-          break;
-
-        default: // html
-          htmlSpans[0].style.display = "inline"
-          htmlSpans[1].style.display = "inline"
-          exibir = "css";
-          break;
-      }
+      // vai para o próximo (ou volta pro 1)
+      exibir < 3 ? exibir++ : exibir = 1
 
     }
 
+    // chama animar a cada 1 segundo (1k mili segundos)
     setInterval(animar, 1000);
   </script>
 
