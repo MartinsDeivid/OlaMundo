@@ -5,7 +5,7 @@
   <title>Um olá mundo simpático</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-    
+
     * {
       margin: 0;
       box-sizing: border-box;
@@ -24,17 +24,84 @@
     }
 
     span {
-      color: #ffb86c;
+      display: none;
     }
 
-    h1 {
-      /* outline: 1px solid red; */
+    span.html {
+      color: #50fa7b;
+    }
+
+    span.css {
+      color: #ff79c6;
+    }
+
+    span.js {
+      color: #f1fa8c;
     }
   </style>
 </head>
 
 <body>
-  <h1><span>&lt;</span>Olá, mundo!<span>&gt;</span></h1>
+  <h1>
+    <span class="html">&lt;</span>
+    <span class="css">{</span>
+    <span class="js">[</span>
+    Olá, mundo!
+    <span class="js">]</span>
+    <span class="css">}</span>
+    <span class="html">&gt;</span>
+  </h1>
+
+  <script>
+    const htmlSpans = document.querySelectorAll("span.html")
+    const cssSpans = document.querySelectorAll("span.css")
+    const jsSpans = document.querySelectorAll("span.js")
+
+    let exibir = "html";
+
+    function animar() {
+      console.log("Chamou animar com exibir = ", exibir)
+
+      if (exibir === "html") {
+        htmlSpans[0].style.display = "inline"
+        htmlSpans[1].style.display = "inline"
+
+        cssSpans[0].style.display = "none"
+        cssSpans[1].style.display = "none"
+
+        jsSpans[0].style.display = "none"
+        jsSpans[1].style.display = "none"
+
+        exibir = "css";
+      } else if (exibir === "css") {
+        htmlSpans[0].style.display = "none"
+        htmlSpans[1].style.display = "none"
+
+        cssSpans[0].style.display = "inline"
+        cssSpans[1].style.display = "inline"
+
+        jsSpans[0].style.display = "none"
+        jsSpans[1].style.display = "none"
+
+        exibir = "js";
+      } else if (exibir === "js") {
+        htmlSpans[0].style.display = "none"
+        htmlSpans[1].style.display = "none"
+
+        cssSpans[0].style.display = "none"
+        cssSpans[1].style.display = "none"
+
+        jsSpans[0].style.display = "inline"
+        jsSpans[1].style.display = "inline"
+
+        exibir = "html";
+      }
+
+    }
+
+    setInterval(animar, 1000);
+  </script>
+
 </body>
 
 </html>
