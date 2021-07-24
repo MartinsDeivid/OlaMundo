@@ -4,14 +4,21 @@
 <head>
   <title>Um olá mundo simpático</title>
   <style>
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+
     body {
+      /* border: 1px solid white; */
       background-color: #282a36;
       color: white;
       font-family: monospace;
       text-transform: uppercase;
       text-align: center;
-      /* border: 1px solid white; */
-      height: 780px;
+      height: 100vh;
+      display: grid;
+      place-items: center;
     }
 
     span {
@@ -19,14 +26,13 @@
     }
 
     h1 {
-      margin-top: 380px;
       /* outline: 1px solid red; */
     }
   </style>
 </head>
 
 <body>
-  <h1><span><</span>Olá, mundo!<span>></span></h1>
+  <h1><span>&lt;</span>Olá, mundo!<span>&gt;</span></h1>
 </body>
 
 </html>
