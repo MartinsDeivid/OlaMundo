@@ -65,11 +65,11 @@
       console.log("Exibir=", exibir, " cssClasseParaExibir=", cssClasseParaExibir)
 
       // apaga ou exibe de acordo com a classe da vez
-      spans.forEach(s => {
-        if (s.classList.contains(cssClasseParaExibir)) {
-          s.style.display = "inline"
+      spans.forEach(span => {
+        if (span.classList.contains(cssClasseParaExibir)) {
+          span.style.display = "inline"
         } else {
-          s.style.display = "none"
+          span.style.display = "none"
         }
       })
 
